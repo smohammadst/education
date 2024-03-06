@@ -32,7 +32,7 @@ async function verifyJWT(req, res, next) {
         const verifyUser = JWT.verify(token, process.env.ACCESS_TOKEN_SECRET_KEY);
         console.log(verifyUser);
         // console.log(verifyJWT);
-        const user = await UserModel.findOne({ phone: verifyUser.phone })
+        const user = await UserModel.findOne({ phone: verifyUser.phone }, { _id: 1 })
         // console.log("user jwt : " + user);
         if (!user) return createHttpError.Unauthorized("کاربری یافت نشد");
         req.user = user;
