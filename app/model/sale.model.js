@@ -7,8 +7,8 @@ const MelipayamakApi = require("melipayamak");
 const { UserModel } = require("./user.model");
 const { PaymentModel } = require("./payments");
 const { BookModel } = require("./book.model");
-const username = "09307886969";
-const password = "FL2$Q";
+const username = "09000000";
+const password = "*****";
 const api = new MelipayamakApi(username, password);
 
 const saleSchema = new mongoose.Schema(

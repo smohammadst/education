@@ -4,8 +4,8 @@ const { signJWT, VerifyRefreshToken, SignRefreshToken } = require("../../middlew
 const { StatusCodes } = require("http-status-codes");
 const MelipayamakApi = require('melipayamak');
 const Controller = require("../controller");
-const username = '09307886969';
-const password = 'FL2$Q';
+const username = '0900000';
+const password = '****';
 const api = new MelipayamakApi(username, password);
 class AuthController extends Controller {
     async checkUser(req, res, next) {
@@ -95,8 +95,6 @@ class AuthController extends Controller {
     async validtionCode(phone, code) {
         const findUser = await this.findUser(phone)
         if (!findUser) throw createHttpError.NotFound("کاربری یافت نشد");
-        // console.log(code);
-        // console.log(findUser.otp.code);
         if (+code != +findUser.otp.code) return false
         return true
     }
