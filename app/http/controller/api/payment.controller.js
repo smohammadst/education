@@ -319,19 +319,7 @@ class PaymentControllerApi extends Controller {
             if (status == "true")
                 sendStatusCode = true;
             else sendStatusCode = false;
-            // const username = '09307886969';
-            // const password = 'FL2$Q';
-            // const api = new MelipayamakApi(username, password);
-            // const smsRest = api.sms()
-            // const to = "" + phone;
-            // const from = "50004001886969";
-            // const text = `${trackingCode}`;
-            // // const bodyid = "کد ورود یکبار مصرف شما {0} میباشد"
-            // smsRest.sendByBaseNumber(text, to, 175205).then(e => {
-            //     console.log(e)
-            // }).catch(err => {
-            //     console.log("err" + err)
-            // })
+
             const sale = await SaleModel.updateOne({ id }, { $set: { sendStatusCode, trackingCode } });
             return res.status(HttpStatus.StatusCodes.OK).json({
                 StatusCode: HttpStatus.StatusCodes.OK,
