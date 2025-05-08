@@ -53,10 +53,7 @@ class UserController extends Controller {
             if (sale) {
                 for (var i = 0; i < sale.length; i++) {
                     const payment = await PaymentModel.findOne({ authority: sale[i].authority })
-                    // //le.log(payment);
                     date = sale[i].createdAt
-                    // factor = payment.invoiceNumber
-                    // factor = 567890931
                     for (let x = 0; x < sale[i].bookID.length; x++) {
                         await BookModel.findOne({ _id: sale[i].bookID[x] })
                         numberBook += 1
@@ -81,9 +78,7 @@ class UserController extends Controller {
             user["lengthCourseInPerson"] = numberCourseInPersone;
             user["lengthBook"] = numberBook;
             user["lengthcomment"] = numberComment;
-            // user["codeSpotPlayer"] = token;
             user["date"] = date
-            // user['factor'] = factor
             return res.status(StatusCodes.OK).json({
                 StatusCode: StatusCodes.OK,
                 user
@@ -225,9 +220,7 @@ class UserController extends Controller {
                         }
                         products.push(product);
                     }
-                    // console.log(`products11:${product}`);
                 }
-                // console.log(`products1:${products}`);
 
             } else if (limit == 0) {
                 if (property.length <= 5) {
@@ -281,7 +274,6 @@ class UserController extends Controller {
                             products.push(product);
                         }
                     }
-                    // console.log(`products3:${products}`);
                 }
             }
             console.log(`products4:${products}`);
