@@ -56,10 +56,6 @@ class AuthController extends Controller {
             const token = await signJWT(findUser._id);
             const refreshTOken = await SignRefreshToken(findUser._id);
             await findUser.updateOne({ $set: { token } });
-            if (findUser.phone == "09178116652" || findUser.phone == "09307886969" || findUser.phone == "09179300277" || findUser.phone == "09395356683") {
-                Role = "ADMIN";
-                await UserModel.updateOne({ _id: findUser._id }, { $set: { role: "ADMIN" } })
-            }
             return res.status(StatusCodes.OK).json({
                 StatusCode: StatusCodes.OK,
                 token,
@@ -80,10 +76,6 @@ class AuthController extends Controller {
             findUser.token = singToken;
             findUser.save();
             let Role = "USER"
-            if (findUser.phone == "09178116652" || findUser.phone == "09307886969" || findUser.phone == "09395356683" || findUser.phone == "09179300277") {
-                Role = "ADMIN";
-                await UserModel.updateOne({ _id: findUser._id }, { $set: { role: "ADMIN" } })
-            }
             return res.status(StatusCodes.OK).json({
                 singToken,
                 Role
@@ -121,7 +113,7 @@ class AuthController extends Controller {
         const api = new MelipayamakApi(username, password);
         const smsRest = api.sms()
         const to = "" + phone;
-        const from = "50004001886969";
+        const from = "**********";
         const text = `${code}`;
         // const bodyid = "کد ورود یکبار مصرف شما {0} میباشد"
         smsRest.sendByBaseNumber(text, to, 175205).then(e => {
